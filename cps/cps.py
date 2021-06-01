@@ -1,7 +1,10 @@
 import pygame
 import json
+import os
 
 pygame.init()
+
+main_path = os.getcwd()
 
 screen = pygame.display.set_mode((200, 200))
 
@@ -9,17 +12,17 @@ font = pygame.font.SysFont("Arial", 45)
 best_font = pygame.font.SysFont("Arial", 27)
 best_font_ever = pygame.font.SysFont("Arial", 20)
 
-with open ('Desktop\pygame\cps\est_score.json', "r") as f:
+with open (main_path + '/Desktop/cps/est_score.json', "r") as f:
         data = json.load(f)
         dico = data
 
-bg = pygame.image.load("Desktop\pygame\cps\gb.png")
+bg = pygame.image.load(main_path + "/Desktop/cps/gb.png")
 
 def revrite(number):
 
     dico["best_score"] = number
 
-    with open ('Desktop\pygame\cps\est_score.json', "w") as fi:
+    with open (main_path + '/Desktop/cps/est_score.json', "w") as fi:
         json.dump(dico, fi, indent = 4, ensure_ascii=False, sort_keys=False)
 
 best_score_ever = data["best_score"]
